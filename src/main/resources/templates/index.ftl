@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h2 class="text-center text-info">Spring Boot Freemarker Tutorial</h2><hr/>
-        <h4>Hello ${name}!</h4>
+        <h4>Hello World!</h4>
     </div>
 </body>
 </html>
