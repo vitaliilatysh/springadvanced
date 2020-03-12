@@ -19,7 +19,6 @@
         </form>
     </div>
     <div class="container">
-        <h2 class="text-center text-info">Phone directory</h2><hr/>
         <form method="post" enctype="multipart/form-data" action="/companies">
          <div>
            <label for="file">Choose file to upload companies</label>
@@ -31,7 +30,6 @@
         </form>
     </div>
     <div class="container">
-        <h2 class="text-center text-info">Phone directory</h2><hr/>
         <form method="post" enctype="multipart/form-data" action="/phones">
          <div>
            <label for="file">Choose file to upload phones</label>
@@ -41,6 +39,10 @@
            <button>Submit</button>
          </div>
         </form>
+    </div>
+
+    <div class="container">
+         <a href="/users">Show users</a>
     </div>
 </body>
 </html>

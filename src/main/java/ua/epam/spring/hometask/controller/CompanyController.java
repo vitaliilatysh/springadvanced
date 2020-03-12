@@ -25,7 +25,7 @@ public class CompanyController {
     @Autowired
     private CompanyRepository companyRepository;
 
-    @PostMapping("/users")
+    @PostMapping("/companies")
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
         File convertedFile = new File(uploadingDir + file.getOriginalFilename());
         ObjectMapper mapper = new ObjectMapper();
