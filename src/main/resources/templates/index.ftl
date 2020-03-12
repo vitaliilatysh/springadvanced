@@ -7,8 +7,40 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="text-center text-info">Spring Boot Freemarker Tutorial</h2><hr/>
-        <h4>Hello World!</h4>
+        <h2 class="text-center text-info">Phone directory</h2><hr/>
+        <form method="post" enctype="multipart/form-data" action="/users">
+         <div>
+           <label for="file">Choose file to upload users</label>
+           <input type="file" id="file" name="file" multiple>
+         </div>
+         <div>
+           <button>Submit</button>
+         </div>
+        </form>
+    </div>
+    <div class="container">
+        <h2 class="text-center text-info">Phone directory</h2><hr/>
+        <form method="post" enctype="multipart/form-data" action="/companies">
+         <div>
+           <label for="file">Choose file to upload companies</label>
+           <input type="file" id="file" name="file" multiple>
+         </div>
+         <div>
+           <button>Submit</button>
+         </div>
+        </form>
+    </div>
+    <div class="container">
+        <h2 class="text-center text-info">Phone directory</h2><hr/>
+        <form method="post" enctype="multipart/form-data" action="/phones">
+         <div>
+           <label for="file">Choose file to upload phones</label>
+           <input type="file" id="file" name="file" multiple>
+         </div>
+         <div>
+           <button>Submit</button>
+         </div>
+        </form>
     </div>
 </body>
 </html>

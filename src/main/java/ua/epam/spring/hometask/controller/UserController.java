@@ -20,18 +20,13 @@ import java.util.List;
  * Created: 10.03.2020
  */
 @Controller
-public class MainController {
+public class UserController {
     public static final String uploadingDir = System.getProperty("user.dir") + "/";
 
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping(value = "/")
-    public String index() {
-        return "index";
-    }
-
-    @PostMapping("/")
+    @PostMapping("/users")
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
         File convertedFile = new File(uploadingDir + file.getOriginalFilename());
         ObjectMapper mapper = new ObjectMapper();
@@ -43,6 +38,11 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return "index";
+    }
+
+    @GetMapping("/users")
+    public String getUsers() {
         return "index";
     }
 }
