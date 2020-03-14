@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ua.epam.spring.hometask.models.Company;
 import ua.epam.spring.hometask.models.Phone;
@@ -41,7 +42,7 @@ public class MainController {
     }
 
     @PostMapping("/files")
-    public String handleFileUpload(MultipartFile[] files) {
+    public String handleFileUpload(@RequestParam("file") MultipartFile[] files) {
         if (files == null) {
             throw new IllegalArgumentException("No files uploaded. Please, upload the file.");
         }

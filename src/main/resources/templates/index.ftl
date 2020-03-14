@@ -20,7 +20,9 @@
     </div>
 
     <div class="container">
-         <a href="/users">Show users</a>
+         <a href="/users">Show users</a><br>
+         <a href="/phones">Show phones</a><br>
+         <a href="/companies">Show companies</a>
     </div>
 </body>
 </html>
