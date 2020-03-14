@@ -14,6 +14,7 @@ import ua.epam.spring.hometask.repositories.CompanyRepository;
 import ua.epam.spring.hometask.repositories.PhoneRepository;
 import ua.epam.spring.hometask.repositories.UserRepository;
 
+import javax.persistence.PersistenceException;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -41,7 +42,7 @@ public class MainController {
 
     @PostMapping("/files")
     public String handleFileUpload(MultipartFile[] files) {
-        if (files == null || files.length == 0) {
+        if (files == null) {
             throw new IllegalArgumentException("No files uploaded. Please, upload the file.");
         }
 
@@ -69,7 +70,9 @@ public class MainController {
                     companyRepository.saveAll(companyList);
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new IllegalArgumentException(e);
+            } catch (PersistenceException e) {
+                throw new PersistenceException(e);
             }
         }
         return "redirect:/";
