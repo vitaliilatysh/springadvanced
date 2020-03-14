@@ -13,9 +13,9 @@ create table Company (
 
 create table Phone (
     id              int             auto_increment,
-    name            varchar(50)     not null,
+    number          varchar(13)     not null,
     user_id         int             not null,
     company_id      int             not null,
     foreign key (user_id)           references User(id)            on delete cascade,
-    foreign key (company_id)        references Company(id)  on delete cascade
+    foreign key (company_id)        references Company(id)         on delete cascade
 );

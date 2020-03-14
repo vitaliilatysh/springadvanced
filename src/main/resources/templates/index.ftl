@@ -8,31 +8,9 @@
 <body>
     <div class="container">
         <h2 class="text-center text-info">Phone directory</h2><hr/>
-        <form method="post" enctype="multipart/form-data" action="/users">
+        <form method="post" enctype="multipart/form-data" action="/files">
          <div>
-           <label for="file">Choose file to upload users</label>
-           <input type="file" id="file" name="file" multiple>
-         </div>
-         <div>
-           <button>Submit</button>
-         </div>
-        </form>
-    </div>
-    <div class="container">
-        <form method="post" enctype="multipart/form-data" action="/companies">
-         <div>
-           <label for="file">Choose file to upload companies</label>
-           <input type="file" id="file" name="file" multiple>
-         </div>
-         <div>
-           <button>Submit</button>
-         </div>
-        </form>
-    </div>
-    <div class="container">
-        <form method="post" enctype="multipart/form-data" action="/phones">
-         <div>
-           <label for="file">Choose file to upload phones</label>
+           <label for="file">Choose json files</label>
            <input type="file" id="file" name="file" multiple>
          </div>
          <div>
