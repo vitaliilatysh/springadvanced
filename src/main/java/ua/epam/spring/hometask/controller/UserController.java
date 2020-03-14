@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import ua.epam.spring.hometask.exceptions.ItemNotFoundException;
+import ua.epam.spring.hometask.models.User;
 import ua.epam.spring.hometask.repositories.UserRepository;
 import ua.epam.spring.hometask.utils.PdfUtil;
 
@@ -27,7 +29,13 @@ public class UserController {
 
     @GetMapping(value = "/users", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<byte[]> showAllUsers() throws Exception {
-        PdfUtil.createPdfResponseFile(userRepository.findAll());
+        Iterable<User> users = userRepository.findAll();
+
+        if (!users.iterator().hasNext()) {
+            throw new ItemNotFoundException("No users found.");
+        }
+
+        PdfUtil.createPdfResponseFile(users);
 
         byte[] contents = Files.readAllBytes(Paths.get(UPLOADING_DIR + "/users.pdf"));
 

@@ -3,6 +3,8 @@ package ua.epam.spring.hometask.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import ua.epam.spring.hometask.exceptions.ItemNotFoundException;
+import ua.epam.spring.hometask.models.Company;
 import ua.epam.spring.hometask.repositories.CompanyRepository;
 
 /**
@@ -17,7 +19,10 @@ public class CompanyController {
 
     @GetMapping("/companies")
     public String showAllCompanies() {
-        companyRepository.findAll();
+        Iterable<Company> companies = companyRepository.findAll();
+        if (!companies.iterator().hasNext()) {
+            throw new ItemNotFoundException("No companies were found.");
+        }
         return "index";
     }
 }
