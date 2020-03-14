@@ -45,6 +45,7 @@ public class MainController {
         List<User> usersList;
         List<Company> companyList;
         List<Phone> phonesList;
+
         for (MultipartFile file : files) {
             String originalFilename = file.getOriginalFilename();
             File convertedFile = new File(UPLOADING_DIR + originalFilename);

@@ -1,10 +1,8 @@
 package ua.epam.spring.hometask.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @author Vitalii Latysh
@@ -12,10 +10,6 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "phone")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id",
-        scope = Phone.class)
 public class Phone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,5 +51,21 @@ public class Phone implements Serializable {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Phone phone = (Phone) o;
+        return id.equals(phone.id) &&
+                number.equals(phone.number) &&
+                user.equals(phone.user) &&
+                company.equals(phone.company);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, number, user, company);
     }
 }

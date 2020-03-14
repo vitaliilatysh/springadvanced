@@ -1,10 +1,9 @@
 package ua.epam.spring.hometask.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -13,10 +12,6 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "company")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id",
-        scope = Company.class)
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,5 +45,20 @@ public class Company {
 
     public void setPhones(Set<Phone> phones) {
         this.phones = phones;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Company company = (Company) o;
+        return id.equals(company.id) &&
+                name.equals(company.name) &&
+                phones.equals(company.phones);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, phones);
     }
 }

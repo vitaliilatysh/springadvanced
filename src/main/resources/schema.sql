@@ -17,5 +17,6 @@ create table Phone (
     user_id         int             not null,
     company_id      int             not null,
     foreign key (user_id)           references User(id)            on delete cascade,
-    foreign key (company_id)        references Company(id)         on delete cascade
+    foreign key (company_id)        references Company(id)         on delete cascade,
+    UNIQUE(number)
 );
