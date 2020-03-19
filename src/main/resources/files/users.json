@@ -1,10 +1,16 @@
 [
   {
     "firstName": "Donald",
-    "lastName": "Macconel"
+    "lastName": "Macconel",
+    "userName": "dmacconel",
+    "password": "1234",
+    "roles": "REGISTERED_USER"
   },
   {
     "firstName": "Mark",
-    "lastName": "Donawan"
+    "lastName": "Donawan",
+    "userName": "mdonawan",
+    "password": "1234",
+    "roles": "REGISTERED_USER"
   }
 ]

@@ -1,0 +1,1 @@
+INSERT INTO USER VALUES (1, 'admin', 'admin', 'admin', 'admin', 'BOOKING_MANAGER,REGISTERED_USER');

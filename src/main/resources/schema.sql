@@ -2,8 +2,11 @@ drop table if exists User, Company, Phone;
 
 create table User (
     id              int             auto_increment,
-    first_name       varchar(50)     not null,
-    last_name        varchar(50)     not null
+    first_name      varchar(50)     not null,
+    last_name       varchar(50)     not null,
+    user_name       varchar(50)     not null,
+    password        varchar(50)     not null,
+    roles           varchar(255)    not null
 );
 
 create table Company (

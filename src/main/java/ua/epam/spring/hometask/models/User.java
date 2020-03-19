@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author Vitalii Latysh
@@ -21,6 +24,12 @@ public class User implements Serializable {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Column(name = "user_name")
+    private String userName;
+    @Column
+    private String password;
+    @Column
+    private String roles;
 
     @OneToMany(mappedBy = "user")
     @JsonBackReference
@@ -38,6 +47,18 @@ public class User implements Serializable {
         return lastName;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public List<Role> getRoles() {
+        return Arrays.stream(roles.split(",")).map(Role::valueOf).collect(Collectors.toList());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,11 +67,13 @@ public class User implements Serializable {
         return id.equals(user.id) &&
                 firstName.equals(user.firstName) &&
                 lastName.equals(user.lastName) &&
-                phones.equals(user.phones);
+                phones.equals(user.phones) &&
+                userName.equals(user.userName) &&
+                roles.equals(user.roles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, phones);
+        return Objects.hash(id, firstName, lastName, phones, userName, password, roles);
     }
 }
