@@ -9,7 +9,7 @@ import java.util.Optional;
  * @author Vitalii Latysh
  * Created: 12.03.2020
  */
-public interface UserRepository extends CrudRepository<User, Integer> {
+public interface UserRepository extends CrudRepository<User, Long> {
 
     Optional<User> findByUserName(String username);
 }

@@ -2,6 +2,7 @@ package ua.epam.spring.hometask.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ua.epam.spring.hometask.models.AppUserDetails;
@@ -11,7 +12,7 @@ import ua.epam.spring.hometask.repositories.UserRepository;
 import java.util.Optional;
 
 @Service
-public class AppUserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
+public class AppUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
