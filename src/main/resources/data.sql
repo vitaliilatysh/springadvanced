@@ -1,1 +1,1 @@
-INSERT INTO USER VALUES (1, 'admin', 'admin', 'admin', 'admin', 'BOOKING_MANAGER,REGISTERED_USER');
+INSERT INTO USER VALUES (1, 'admin', 'admin', 'admin', '$2y$12$6.0cCrh1g.oJQrAQFBe1xOQeYtSpXRMAJmvoyhNh9bQxPVkp93cqO', 'BOOKING_MANAGER,REGISTERED_USER');

@@ -5,7 +5,7 @@ create table User (
     first_name      varchar(50)     not null,
     last_name       varchar(50)     not null,
     user_name       varchar(50)     not null,
-    password        varchar(50)     not null,
+    password        varchar(255)     not null,
     roles           varchar(255)    not null
 );
 
