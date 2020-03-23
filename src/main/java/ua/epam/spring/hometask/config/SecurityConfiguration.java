@@ -34,8 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
                 .antMatchers("/h2-console/**", "/docs/**", "/resources/**").permitAll()
-                .antMatchers("/admin**").hasRole(Role.BOOKING_MANAGER.name())
-                .antMatchers("/files**").hasRole(Role.BOOKING_MANAGER.name())
+                .antMatchers("/admin**", "/files**", "/users/**").hasRole(Role.BOOKING_MANAGER.name())
+                .antMatchers("/users/**").hasRole(Role.REGISTERED_USER.name())
                 .anyRequest().authenticated()
 
                 .and()
