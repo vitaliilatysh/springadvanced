@@ -3,8 +3,6 @@ package ua.epam.spring.hometask.controller;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import ua.epam.spring.hometask.models.Company;
 import ua.epam.spring.hometask.models.Phone;
-import ua.epam.spring.hometask.models.Role;
 import ua.epam.spring.hometask.models.User;
 import ua.epam.spring.hometask.repositories.CompanyRepository;
 import ua.epam.spring.hometask.repositories.PhoneRepository;
@@ -21,9 +18,7 @@ import ua.epam.spring.hometask.repositories.UserRepository;
 import javax.persistence.PersistenceException;
 import java.io.File;
 import java.io.IOException;
-import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 import static ua.epam.spring.hometask.utils.Constants.UPLOADING_DIR;
 
@@ -41,21 +36,9 @@ public class MainController {
     @Autowired
     private PhoneRepository phoneRepository;
 
-    @GetMapping(value = "/home")
-    public String home(Principal principal) {
-        boolean isAdmin = ((UsernamePasswordAuthenticationToken) principal).getAuthorities().stream()
-                .anyMatch(role -> role.getAuthority().equals(Role.BOOKING_MANAGER.name()));
-
-        if (isAdmin) {
-            return "forward:/files";
-        }
-        Optional<User> found = userRepository.findByUserName(principal.getName());
-
-        if (!found.isPresent()) {
-            throw new UsernameNotFoundException("User not found.");
-        }
-
-        return "forward:/users/" + found.get().getId();
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
     }
 
     @PostMapping("/files")
@@ -93,6 +76,6 @@ public class MainController {
                 throw new PersistenceException(e);
             }
         }
-        return "redirect:/";
+        return "redirect:/admin";
     }
 }

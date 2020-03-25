@@ -8,16 +8,19 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import ua.epam.spring.hometask.models.Role;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private AuthenticationSuccessHandler successHandler;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -31,18 +34,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
-                .antMatchers("/h2-console/**", "/docs/**", "/resources/**").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/**", "/login").permitAll()
                 .antMatchers("/admin**", "/files**", "/users/**").hasRole(Role.BOOKING_MANAGER.name())
-                .antMatchers("/users/**").hasRole(Role.REGISTERED_USER.name())
+                .antMatchers("/users/{\\d+}").hasRole(Role.REGISTERED_USER.name())
                 .anyRequest().authenticated()
 
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/home")
+//                .loginPage("/login")
                 .permitAll()
+                .successHandler(successHandler)
 
                 .and()
                 .logout()
@@ -55,6 +58,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .csrf().disable();
+
+        http.headers().frameOptions().disable();
 
     }
 

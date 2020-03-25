@@ -3,14 +3,14 @@
     "firstName": "Donald",
     "lastName": "Macconel",
     "userName": "dmacconel",
-    "password": "1234",
+    "password": "$2a$10$sochs9zIQsv2lPVv1j99sOYXOMA8Q8yq4dA3.LC6www4dDg/ubOvC",
     "roles": "REGISTERED_USER"
   },
   {
     "firstName": "Mark",
     "lastName": "Donawan",
     "userName": "mdonawan",
-    "password": "1234",
+    "password": "$2a$10$HTHcLG1ShNfHrPuRkVZW6eWlxrW3ELjO/T/EusOlhAjwMgamKpynq",
     "roles": "REGISTERED_USER"
   }
 ]
