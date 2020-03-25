@@ -35,15 +35,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/**", "/login").permitAll()
+                .antMatchers("/**", "/login", "/h2-console/**").permitAll()
                 .antMatchers("/admin**", "/files**", "/users/**").hasRole(Role.BOOKING_MANAGER.name())
                 .antMatchers("/users/{\\d+}").hasRole(Role.REGISTERED_USER.name())
                 .anyRequest().authenticated()
 
                 .and()
                 .formLogin()
-//                .loginPage("/login")
+                .loginPage("/login")
                 .permitAll()
                 .successHandler(successHandler)
 

@@ -31,7 +31,6 @@
     <link href="signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
-<form class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <form class="form-signin" method="post" action="login">
         <p>
@@ -46,6 +45,5 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
-</form>
 </body>
 </html>
