@@ -12,6 +12,7 @@
          <div>
            <label for="file">Choose json files</label>
            <input type="file" id="file" name="file" multiple>
+           <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
          </div>
          <div>
            <button>Submit</button>

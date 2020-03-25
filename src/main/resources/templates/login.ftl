@@ -6,24 +6,11 @@
     <meta content="" name="description">
     <meta content="Mark Otto, Jacob Thornton, and Bootstrap contributors" name="author">
     <meta content="Jekyll v3.8.6" name="generator">
-    <title>Welcome page</title>
-
-    <link href="https://getbootstrap.com/docs/4.4/examples/sign-in/" rel="canonical">
-
-    <!-- Bootstrap core CSS -->
-<link crossorigin="anonymous" href="/docs/4.4/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
-
-    <!-- Favicons -->
-<link href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
-<link href="/docs/4.4/assets/img/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
-<link href="/docs/4.4/assets/img/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-<link href="/docs/4.4/assets/img/favicons/manifest.json" rel="manifest">
-<link color="#563d7c" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" rel="mask-icon">
-<link href="/docs/4.4/assets/img/favicons/favicon.ico" rel="icon">
+    <title>Custom login page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity=\sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
+	<link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
 <meta content="/docs/4.4/assets/img/favicons/browserconfig.xml" name="msapplication-config">
 <meta content="#563d7c" name="theme-color">
-
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -46,7 +33,7 @@
 <body class="text-center">
 <form class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <form class="form-signin" method="post" action="/login">
+      <form class="form-signin" method="post" action="login">
         <p>
           <label for="username" class="sr-only">Username</label>
           <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
@@ -55,7 +42,8 @@
           <label for="password" class="sr-only">Password</label>
           <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
         </p>
-<p><input type='checkbox' name='remember-me'/> Remember me on this computer.</p>
+        <p><input type='checkbox' name='remember-me'/> Remember me on this computer.</p>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 </form>

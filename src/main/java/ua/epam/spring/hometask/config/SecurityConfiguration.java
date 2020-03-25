@@ -54,10 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
 
                 .and()
-                .rememberMe().tokenValiditySeconds(3600).key("secretKey")
-
-                .and()
-                .csrf().disable();
+                .rememberMe().tokenValiditySeconds(3600).key("secretKey");
 
         http.headers().frameOptions().disable();
 
