@@ -1,4 +1,4 @@
-package ua.epam.spring.hometask.config;
+package ua.epam.spring.hometask.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/**", "/login", "/h2-console/**").permitAll()
-                .antMatchers("/admin**", "/files**", "/users/**").hasRole(Role.BOOKING_MANAGER.name())
+                .antMatchers("/admin**", "/files**", "/users/**", "/accounts/**").hasRole(Role.BOOKING_MANAGER.name())
                 .antMatchers("/users/{\\d+}").hasRole(Role.REGISTERED_USER.name())
                 .anyRequest().authenticated()
 

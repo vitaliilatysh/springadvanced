@@ -1,0 +1,29 @@
+[
+  {
+    "credit": "200",
+    "user": {
+      "id": 2
+    },
+    "company": {
+      "id": 1
+    }
+  },
+  {
+    "credit": "300",
+    "user": {
+      "id": 2
+    },
+    "company": {
+      "id": 2
+    }
+  },
+  {
+    "credit": "100",
+    "user": {
+      "id": 3
+    },
+    "company": {
+      "id": 3
+    }
+  }
+]

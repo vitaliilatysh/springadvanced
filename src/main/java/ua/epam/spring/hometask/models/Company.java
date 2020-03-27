@@ -23,6 +23,9 @@ public class Company {
     @JsonBackReference
     private Set<Phone> phones;
 
+    @OneToMany(mappedBy = "company")
+    private Set<Account> accounts;
+
     public Long getId() {
         return id;
     }
@@ -54,11 +57,12 @@ public class Company {
         Company company = (Company) o;
         return id.equals(company.id) &&
                 name.equals(company.name) &&
+                accounts.equals(company.accounts) &&
                 phones.equals(company.phones);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, phones);
+        return Objects.hash(id, name, phones, accounts);
     }
 }

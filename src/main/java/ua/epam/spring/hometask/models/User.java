@@ -35,6 +35,9 @@ public class User implements Serializable {
     @JsonBackReference
     private Set<Phone> phones;
 
+    @OneToMany(mappedBy = "user")
+    private Set<Account> accounts;
+
     public Long getId() {
         return id;
     }

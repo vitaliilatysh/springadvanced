@@ -1,4 +1,4 @@
-package ua.epam.spring.hometask.config;
+package ua.epam.spring.hometask.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

@@ -1,8 +1,10 @@
-package ua.epam.spring.hometask.models;
+package ua.epam.spring.hometask.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ua.epam.spring.hometask.models.Role;
+import ua.epam.spring.hometask.models.User;
 
 import java.util.Collection;
 import java.util.List;

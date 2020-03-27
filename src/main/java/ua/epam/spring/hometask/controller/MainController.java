@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import ua.epam.spring.hometask.models.Account;
 import ua.epam.spring.hometask.models.Company;
 import ua.epam.spring.hometask.models.Phone;
 import ua.epam.spring.hometask.models.User;
+import ua.epam.spring.hometask.repositories.AccountRepository;
 import ua.epam.spring.hometask.repositories.CompanyRepository;
 import ua.epam.spring.hometask.repositories.PhoneRepository;
 import ua.epam.spring.hometask.repositories.UserRepository;
@@ -35,6 +37,8 @@ public class MainController {
     private CompanyRepository companyRepository;
     @Autowired
     private PhoneRepository phoneRepository;
+    @Autowired
+    private AccountRepository accountRepository;
 
     @GetMapping("/admin")
     public String admin() {
@@ -50,6 +54,7 @@ public class MainController {
         List<User> usersList;
         List<Company> companyList;
         List<Phone> phonesList;
+        List<Account> accounts;
 
         for (MultipartFile file : files) {
             String originalFilename = file.getOriginalFilename();
@@ -65,6 +70,10 @@ public class MainController {
                     phonesList = mapper.readValue(convertedFile, new TypeReference<List<Phone>>() {
                     });
                     phoneRepository.saveAll(phonesList);
+                } else if ("accounts.json".equals(originalFilename)) {
+                    accounts = mapper.readValue(convertedFile, new TypeReference<List<Account>>() {
+                    });
+                    accountRepository.saveAll(accounts);
                 } else {
                     companyList = mapper.readValue(convertedFile, new TypeReference<List<Company>>() {
                     });
