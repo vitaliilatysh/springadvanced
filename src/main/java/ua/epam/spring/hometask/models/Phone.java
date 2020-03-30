@@ -68,4 +68,14 @@ public class Phone implements Serializable {
     public int hashCode() {
         return Objects.hash(id, number, user, company);
     }
+
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "id=" + id +
+                ", number='" + number + '\'' +
+                ", user=" + user.getUserName() +
+                ", company=" + company.getName() +
+                '}';
+    }
 }

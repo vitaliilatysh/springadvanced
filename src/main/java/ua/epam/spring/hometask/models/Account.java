@@ -52,4 +52,14 @@ public class Account {
     public int hashCode() {
         return Objects.hash(id, credit, user, company);
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", credit=" + credit +
+                ", user=" + user.getUserName() +
+                ", company=" + company.getName() +
+                '}';
+    }
 }

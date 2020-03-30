@@ -34,7 +34,7 @@ public class Company {
         this.id = id;
     }
 
-    public String getLastName() {
+    public String getName() {
         return name;
     }
 
@@ -64,5 +64,15 @@ public class Company {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, phones, accounts);
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phones=" + phones.size() +
+                ", accounts=" + accounts.size() +
+                '}';
     }
 }

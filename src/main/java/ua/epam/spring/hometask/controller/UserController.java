@@ -7,14 +7,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import ua.epam.spring.hometask.exceptions.ItemNotFoundException;
 import ua.epam.spring.hometask.models.Role;
 import ua.epam.spring.hometask.models.User;
 import ua.epam.spring.hometask.repositories.UserRepository;
+import ua.epam.spring.hometask.services.UserMobileService;
 import ua.epam.spring.hometask.utils.PdfUtil;
 
 import java.nio.file.Files;
@@ -28,9 +30,11 @@ import static ua.epam.spring.hometask.utils.Constants.UPLOADING_DIR;
  * @author Vitalii Latysh
  * Created: 10.03.2020
  */
-@Controller
+@RestController
 public class UserController {
 
+    @Autowired
+    private UserMobileService userMobileService;
     @Autowired
     private UserRepository userRepository;
 
@@ -69,4 +73,16 @@ public class UserController {
         model.addObject("user", found.get());
         return model;
     }
+
+    @GetMapping("/users/{id}/change")
+    public User change(@PathVariable("id") Long userId, @RequestParam String number, @RequestParam String companyName) {
+        userMobileService.changeMobileOperator(userId, number, companyName);
+        Optional<User> found = userRepository.findById(userId);
+        if (!found.isPresent()) {
+            throw new ItemNotFoundException("No user found.");
+        }
+        return found.get();
+    }
+
+
 }

@@ -26,7 +26,7 @@ create table Account (
 
 create table Phone (
     id              int             auto_increment,
-    number          varchar(13)     not null,
+    number          varchar(12)     not null,
     user_id         int             not null,
     company_id      int             not null,
     foreign key (user_id)           references User(id)            on delete cascade,
